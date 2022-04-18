@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>open_manipulator_7dof_description</name>
+  <version>1.0.0</version>
+  <description>
+    Package for OpenMANIPULATOR-7-DOF description
+  </description>
+  <license>Apache 2.0</license>
+  <author email="sungjae_min@kaist.ac.kr">Min Sungjae</author>
+  <maintainer email="sungjae_min@kaist.ac.kr">Min Sungjae</maintainer>
+  <url type="website">unmanned.kaist.ac.kr</url>
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>joint_state_publisher</depend>
+  <depend>robot_state_publisher</depend>
+  <depend>xacro</depend>
+  <depend>urdf</depend>
+</package>

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0"?>
+<package format="2">
+  <name>open_manipulator_7dof_controller</name>
+  <version>1.0.0</version>
+  <description>
+    Package for OpenMANIPULATOR-P with 7DOF edited version Controller
+  </description>
+  <license>Apache 2.0</license>
+  <author email="sungjae_min@kaist.ac.kr">Sungjae Min</author>
+  <maintainer email="sungjae_min@kaist.ac.kr">Sungjae Min</maintainer>
+  <url type="website">unmanned.kaist.ac.kr</url>
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>roscpp</depend>
+  <depend>std_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>trajectory_msgs</depend>
+  <depend>open_manipulator_msgs</depend>
+  <depend>robotis_manipulator</depend>
+  <depend>open_manipulator_p_libs</depend>
+  <depend>cmake_modules</depend>
+  <depend>boost</depend>
+</package>

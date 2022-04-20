@@ -1,6 +1,6 @@
 <launch>
-  <arg name="use_gui"        default="true" />
-  <arg name="with_gripper"   default="false" />
+  <arg name="use_gui"        default="false" />
+  <arg name="with_gripper"   default="true" />
 
   <!-- Load the URDF into the ROS Parameter Server -->
   <include file="$(find open_manipulator_7dof_description)/launch/open_manipulator_7dof_upload.launch">

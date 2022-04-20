@@ -112,6 +112,11 @@ Visualization Manager:
           Show Axes: true
           Show Trail: false
           Value: true
+        link7:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         world:
           Alpha: 1
           Show Axes: true

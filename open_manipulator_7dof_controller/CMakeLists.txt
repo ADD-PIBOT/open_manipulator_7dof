@@ -18,7 +18,7 @@ find_package(catkin REQUIRED
     trajectory_msgs
     open_manipulator_msgs
     robotis_manipulator
-    open_manipulator_p_libs
+    open_manipulator_7dof_libs
     cmake_modules
 )
 find_package(Boost REQUIRED)
@@ -48,7 +48,7 @@ catkin_package(
     trajectory_msgs
     open_manipulator_msgs
     robotis_manipulator
-    open_manipulator_p_libs
+    open_manipulator_7dof_libs
     cmake_modules
   DEPENDS Boost
 )

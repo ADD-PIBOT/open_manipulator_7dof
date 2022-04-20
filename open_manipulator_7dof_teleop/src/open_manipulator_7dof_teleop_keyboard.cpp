@@ -76,6 +76,7 @@ void OpenManipulatorTeleop::jointStatesCallback(const sensor_msgs::JointState::C
     else if (!msg->name.at(i).compare("joint4"))  temp_angle.at(3) = (msg->position.at(i));
     else if (!msg->name.at(i).compare("joint5"))  temp_angle.at(4) = (msg->position.at(i));
     else if (!msg->name.at(i).compare("joint6"))  temp_angle.at(5) = (msg->position.at(i));
+    else if (!msg->name.at(i).compare("joint7"))  temp_angle.at(5) = (msg->position.at(i)); // MSJ
   }
   present_joint_angle_ = temp_angle;
 }

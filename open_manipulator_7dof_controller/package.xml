@@ -17,7 +17,7 @@
   <depend>trajectory_msgs</depend>
   <depend>open_manipulator_msgs</depend>
   <depend>robotis_manipulator</depend>
-  <depend>open_manipulator_p_libs</depend>
+  <depend>open_manipulator_7dof_libs</depend>
   <depend>cmake_modules</depend>
   <depend>boost</depend>
 </package>

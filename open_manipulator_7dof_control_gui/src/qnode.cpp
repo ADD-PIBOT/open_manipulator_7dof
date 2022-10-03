@@ -31,7 +31,7 @@
 ** Namespaces
 *****************************************************************************/
 
-namespace open_manipulator_p_control_gui {
+namespace open_manipulator_7dof_control_gui {
 
 /*****************************************************************************
 ** Implementation
@@ -54,7 +54,7 @@ QNode::~QNode() {
 }
 
 bool QNode::init() {
-	ros::init(init_argc,init_argv,"open_manipulator_p_control_gui");
+	ros::init(init_argc,init_argv,"open_manipulator_7dof_control_gui");
 	if ( ! ros::master::check() ) {
 		return false;
 	}
@@ -119,10 +119,11 @@ void QNode::jointStatesCallback(const sensor_msgs::JointState::ConstPtr &msg)
     else if(!msg->name.at(i).compare("joint4"))  temp_angle.at(3) = (msg->position.at(i));
     else if(!msg->name.at(i).compare("joint5"))  temp_angle.at(4) = (msg->position.at(i));
     else if(!msg->name.at(i).compare("joint6"))  temp_angle.at(5) = (msg->position.at(i));
+    else if(!msg->name.at(i).compare("joint7"))  temp_angle.at(6) = (msg->position.at(i));
     
     if (getWithGripperState())
     {
-      if(!msg->name.at(i).compare("gripper")) temp_angle.at(6) = (msg->position.at(i));      
+      if(!msg->name.at(i).compare("gripper")) temp_angle.at(7) = (msg->position.at(i));      
     }
   }
   present_joint_angle_ = temp_angle;
@@ -261,4 +262,4 @@ bool QNode::setActuatorState(bool actuator_state)
 }
 
 
-}  // namespace open_manipulator_p_control_gui
+}  // namespace open_manipulator_7dof_control_gui

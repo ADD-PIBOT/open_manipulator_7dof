@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>793</width>
-    <height>740</height>
+    <width>790</width>
+    <height>760</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -21,14 +21,14 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>793</width>
-    <height>737</height>
+    <width>790</width>
+    <height>760</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>793</width>
-    <height>740</height>
+    <width>790</width>
+    <height>760</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -463,7 +463,7 @@
       <x>20</x>
       <y>100</y>
       <width>421</width>
-      <height>601</height>
+      <height>631</height>
      </rect>
     </property>
     <property name="readOnly">
@@ -508,7 +508,7 @@
       <x>460</x>
       <y>404</y>
       <width>321</width>
-      <height>261</height>
+      <height>291</height>
      </rect>
     </property>
     <property name="currentIndex">
@@ -525,7 +525,7 @@
       <property name="geometry">
        <rect>
         <x>9</x>
-        <y>195</y>
+        <y>225</y>
         <width>141</width>
         <height>31</height>
        </rect>
@@ -541,7 +541,7 @@
       <property name="geometry">
        <rect>
         <x>169</x>
-        <y>195</y>
+        <y>225</y>
         <width>141</width>
         <height>31</height>
        </rect>
@@ -581,6 +581,19 @@
        <rect>
         <x>180</x>
         <y>80</y>
+        <width>59</width>
+        <height>14</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>rad</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_91">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>200</y>
         <width>59</width>
         <height>14</height>
        </rect>
@@ -857,6 +870,19 @@
        <string>Joint 6</string>
       </property>
      </widget>
+     <widget class="QLabel" name="label_88">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>198</y>
+        <width>59</width>
+        <height>14</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Joint 7</string>
+      </property>
+     </widget>
      <widget class="QDoubleSpinBox" name="doubleSpinBox_j5">
       <property name="geometry">
        <rect>
@@ -887,6 +913,31 @@
        <rect>
         <x>70</x>
         <y>165</y>
+        <width>101</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+      <property name="decimals">
+       <number>3</number>
+      </property>
+      <property name="minimum">
+       <double>-3.140000000000000</double>
+      </property>
+      <property name="maximum">
+       <double>3.140000000000000</double>
+      </property>
+      <property name="singleStep">
+       <double>0.050000000000000</double>
+      </property>
+     </widget>
+     <widget class="QDoubleSpinBox" name="doubleSpinBox_j7">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>196</y>
         <width>101</width>
         <height>23</height>
        </rect>
@@ -1599,7 +1650,7 @@
     <property name="geometry">
      <rect>
       <x>517</x>
-      <y>684</y>
+      <y>700</y>
       <width>81</width>
       <height>23</height>
      </rect>
@@ -1627,7 +1678,7 @@
     <property name="geometry">
      <rect>
       <x>463</x>
-      <y>684</y>
+      <y>700</y>
       <width>59</width>
       <height>20</height>
      </rect>
@@ -1643,7 +1694,7 @@
     <property name="geometry">
      <rect>
       <x>630</x>
-      <y>681</y>
+      <y>700</y>
       <width>141</width>
       <height>31</height>
      </rect>
@@ -1671,8 +1722,8 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>692</x>
-      <y>287</y>
+      <x>691</x>
+      <y>286</y>
       <width>60</width>
       <height>22</height>
      </rect>
@@ -1707,7 +1758,7 @@
     <property name="geometry">
      <rect>
       <x>603</x>
-      <y>688</y>
+      <y>702</y>
       <width>21</width>
       <height>16</height>
      </rect>
@@ -1810,6 +1861,19 @@
      <string>Joint 6</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label_89">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>287</y>
+      <width>59</width>
+      <height>14</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Joint 7</string>
+    </property>
+   </widget>
    <widget class="QLabel" name="label_43">
     <property name="geometry">
      <rect>
@@ -1849,7 +1913,45 @@
      <string>rad</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label_90">
+    <property name="geometry">
+     <rect>
+      <x>595</x>
+      <y>287</y>
+      <width>59</width>
+      <height>14</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>rad</string>
+    </property>
+   </widget>
    <widget class="QLineEdit" name="txt_j6">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>510</x>
+      <y>284</y>
+      <width>81</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="text">
+     <string>0.0</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="txt_j7">
     <property name="enabled">
      <bool>true</bool>
     </property>
@@ -2058,7 +2160,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>793</width>
+     <width>790</width>
      <height>22</height>
     </rect>
    </property>

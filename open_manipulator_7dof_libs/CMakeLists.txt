@@ -49,7 +49,7 @@ include_directories(
 )
 
 add_library(open_manipulator_7dof_libs
-  src/open_manipulator_p.cpp
+  src/open_manipulator_7dof.cpp
   src/custom_trajectory.cpp
   src/dynamixel.cpp
   src/kinematics.cpp

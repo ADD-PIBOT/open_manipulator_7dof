@@ -20,8 +20,8 @@
 ** Ifdefs
 *****************************************************************************/
 
-#ifndef OPEN_MANIPULATOR_P_CONTROL_GUI_QNODE_HPP_
-#define OPEN_MANIPULATOR_P_CONTROL_GUI_QNODE_HPP_
+#ifndef OPEN_MANIPULATOR_7DOF_CONTROL_GUI_QNODE_HPP_
+#define OPEN_MANIPULATOR_7DOF_CONTROL_GUI_QNODE_HPP_
 
 /*****************************************************************************
 ** Includes
@@ -49,13 +49,13 @@
 #include "open_manipulator_msgs/SetDrawingTrajectory.h"
 #include "open_manipulator_msgs/SetActuatorState.h"
 
-#define NUM_OF_JOINT_AND_TOOL 7
+#define NUM_OF_JOINT_AND_TOOL 8
 
 /*****************************************************************************
 ** Namespaces
 *****************************************************************************/
 
-namespace open_manipulator_p_control_gui {
+namespace open_manipulator_7dof_control_gui {
 
 /*****************************************************************************
 ** Class
@@ -139,6 +139,6 @@ private:
   bool open_manipulator_actuator_enabled_;
 };
 
-}  // namespace open_manipulator_p_control_gui
+}  // namespace open_manipulator_7dof_control_gui
 
-#endif /* OPEN_MANIPULATOR_P_CONTROL_GUI_QNODE_HPP_ */
+#endif /* OPEN_MANIPULATOR_7DOF_CONTROL_GUI_QNODE_HPP_ */

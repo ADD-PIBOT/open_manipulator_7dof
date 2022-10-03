@@ -29,7 +29,7 @@
 ** Namespaces
 *****************************************************************************/
 
-namespace open_manipulator_p_control_gui {
+namespace open_manipulator_7dof_control_gui {
 
 using namespace Qt;
 
@@ -55,8 +55,8 @@ void MainWindow::timerCallback()
 {
   std::vector<double> joint_angle = qnode.getPresentJointAngle();
 
-  int joint_size = 6;
-  if (qnode.getWithGripperState()) joint_size = 7;
+  int joint_size = 7;
+  if (qnode.getWithGripperState()) joint_size = 8;
 
   if(joint_angle.size() != joint_size)
     return;
@@ -67,7 +67,8 @@ void MainWindow::timerCallback()
   ui.txt_j4->setText(QString::number(joint_angle.at(3),'f', 3));
   ui.txt_j5->setText(QString::number(joint_angle.at(4),'f', 3));
   ui.txt_j6->setText(QString::number(joint_angle.at(5),'f', 3));
-  if (qnode.getWithGripperState()) ui.txt_grip->setText(QString::number(joint_angle.at(6),'f', 3));
+  ui.txt_j7->setText(QString::number(joint_angle.at(6),'f', 3));
+  if (qnode.getWithGripperState()) ui.txt_grip->setText(QString::number(joint_angle.at(7),'f', 3));
 
   std::vector<double> position = qnode.getPresentKinematicsPosition();
   Eigen::Vector3d orientation_rpy = qnode.getPresentKinematicsOrientationRPY();
@@ -166,6 +167,7 @@ void MainWindow::on_btn_init_pose_clicked(void)
   joint_name.push_back("joint4"); joint_angle.push_back(0.0);
   joint_name.push_back("joint5"); joint_angle.push_back(0.0);
   joint_name.push_back("joint6"); joint_angle.push_back(0.0);
+  joint_name.push_back("joint7"); joint_angle.push_back(0.0);
 
   if(!qnode.setJointSpacePath(joint_name, joint_angle, path_time))
   {
@@ -184,10 +186,11 @@ void MainWindow::on_btn_home_pose_clicked(void)
 
   joint_name.push_back("joint1"); joint_angle.push_back(0.0);
   joint_name.push_back("joint2"); joint_angle.push_back(-PI/4);
-  joint_name.push_back("joint3"); joint_angle.push_back(PI/8);
-  joint_name.push_back("joint4"); joint_angle.push_back(0.0);
-  joint_name.push_back("joint5"); joint_angle.push_back(PI/8);
-  joint_name.push_back("joint6"); joint_angle.push_back(0.0);
+  joint_name.push_back("joint3"); joint_angle.push_back(0.0);
+  joint_name.push_back("joint4"); joint_angle.push_back(PI/8);
+  joint_name.push_back("joint5"); joint_angle.push_back(0.0);
+  joint_name.push_back("joint6"); joint_angle.push_back(PI/8);
+  joint_name.push_back("joint7"); joint_angle.push_back(0.0);
 
   if(!qnode.setJointSpacePath(joint_name, joint_angle, path_time))
   {
@@ -233,6 +236,7 @@ void MainWindow::on_btn_read_joint_angle_clicked(void)
   ui.doubleSpinBox_j4->setValue(joint_angle.at(3));
   ui.doubleSpinBox_j5->setValue(joint_angle.at(4));
   ui.doubleSpinBox_j6->setValue(joint_angle.at(5));
+  ui.doubleSpinBox_j7->setValue(joint_angle.at(6));
   // ui.doubleSpinBox_gripper->setValue(joint_angle.at(4));
 
   writeLog("Read joint angle");
@@ -249,6 +253,7 @@ void MainWindow::on_btn_send_joint_angle_clicked(void)
   joint_name.push_back("joint4"); joint_angle.push_back(ui.doubleSpinBox_j4->value());
   joint_name.push_back("joint5"); joint_angle.push_back(ui.doubleSpinBox_j5->value());
   joint_name.push_back("joint6"); joint_angle.push_back(ui.doubleSpinBox_j6->value());
+  joint_name.push_back("joint7"); joint_angle.push_back(ui.doubleSpinBox_j7->value());
 
   if(!qnode.setJointSpacePath(joint_name, joint_angle, path_time))
   {
@@ -386,5 +391,5 @@ void MainWindow::on_btn_send_drawing_trajectory_clicked(void)
   writeLog("Send drawing trajectory");
 }
 
-}  // namespace open_manipulator_p_control_gui
+}  // namespace open_manipulator_7dof_control_gui
 

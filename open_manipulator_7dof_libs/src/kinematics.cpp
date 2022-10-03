@@ -82,7 +82,6 @@ bool SolverUsingCRAndJacobian::solveInverseKinematics(Manipulator *manipulator, 
   return inverseSolverUsingJacobian(manipulator, tool_name, target_pose, goal_joint_value);
 }
 
-
 //private
 void SolverUsingCRAndJacobian::forwardSolverUsingChainRule(Manipulator *manipulator, Name component_name)
 {

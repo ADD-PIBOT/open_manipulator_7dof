@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-
+  <xacro:property name="leftarm_rightarm" default="${pi/2}"/>
   <!-- link 1 -->
   <link name="link1">
     <visual>
@@ -32,7 +32,7 @@
     <child link="link2"/>
     <origin xyz="0.0 0.0 0.126" rpy="0 0 0"/>
     <axis xyz="0 0 1"/>
-    <limit velocity="6.5" effort="1000" lower="${-pi*0.5}" upper="${pi*0.5}" />
+    <limit velocity="6.5" effort="1000" lower="${-pi*0.95}" upper="${pi*0.95}" />
     <dynamics damping="0.7"/>
   </joint>
 
@@ -102,9 +102,9 @@
   <joint name="joint3" type="revolute">
     <parent link="link3"/>
     <child link="link4"/>
-    <origin xyz="0.0 -0.069 0.195" rpy="0 0 0"/>
+    <origin xyz="0.0 -0.069 0.195" rpy="0 0 ${leftarm_rightarm}"/>
     <axis xyz="0 0 1"/>
-    <limit velocity="6.5" effort="1000" lower="${-pi*0.5}" upper="${pi*0.5}" />
+    <limit velocity="6.5" effort="1000" lower="${-pi*0.75}" upper="${pi*0.75}" />
     <dynamics damping="0.7"/>
   </joint>
 
@@ -140,7 +140,7 @@
     <child link="link5"/>
     <origin xyz="0.029998 0.05750 0.097498" rpy="0 0 0"/>
     <axis xyz="0 1 0"/>
-    <limit velocity="6.5" effort="1000" lower="${-pi*0.5}" upper="${pi*0.5}" />
+    <limit velocity="6.5" effort="1000" lower="${-pi*0.65}" upper="${pi*0.5}" />
     <dynamics damping="0.7"/>
   </joint>
 
@@ -176,7 +176,7 @@
     <child link="link6"/>
     <origin xyz="0.195 -0.05750 0.03" rpy="0 0 0"/>
     <axis xyz="1 0 0"/>
-    <limit velocity="6.5" effort="1000" lower="${-pi*0.5}" upper="${pi*0.5}" />
+    <limit velocity="6.5" effort="1000" lower="${-pi*0.95}" upper="${pi*0.95}" />
     <dynamics damping="0.7"/>
   </joint>
 
@@ -245,15 +245,40 @@
   <!-- Joint 7 -->
   <joint name="joint7" type="revolute">
     <parent link="link7"/>
-    <child link="end_link"/>
+    <child link="fake_end_link"/>
     <origin xyz="0.1230 -0.045 0.0" rpy="0 0 0"/>
     <axis xyz="1 0 0"/>
-    <limit velocity="6.5" effort="1000" lower="${-pi*0.5}" upper="${pi*0.5}" />
+    <limit velocity="6.5" effort="1000" lower="${-pi*0.95}" upper="${pi*0.95}" />
     <dynamics damping="0.7"/>
   </joint>
 
   <!-- end link -->
-  <link name="end_link">
+  <link name="fake_end_link">
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+      <material name="grey"/>
+    </visual>
+
+    <!-- <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://open_manipulator_7dof_description/meshes/end_link.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision> -->
+
+    <inertial>
+      <origin xyz="0.00337 0.00000 0.00000" rpy="0 0 0"/>
+      <mass value="0.01919"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+      <!--<inertia ixx="0.00000938" ixy="0.0" ixz="0.0" iyy="0.00000338" iyz="0.0" izz="0.00000635" />-->
+    </inertial>
+  </link>
+
+  <!-- end link -->
+  <!-- <link name="end_link">
     <visual>
       <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
       <geometry>
@@ -273,8 +298,8 @@
       <origin xyz="0.00337 0.00000 0.00000" rpy="0 0 0"/>
       <mass value="0.01919"/>
       <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
-      <!--<inertia ixx="0.00000938" ixy="0.0" ixz="0.0" iyy="0.00000338" iyz="0.0" izz="0.00000635" />-->
+      <!-<inertia ixx="0.00000938" ixy="0.0" ixz="0.0" iyy="0.00000338" iyz="0.0" izz="0.00000635" />->
     </inertial>
-  </link>
+  </link> -->
 
 </robot>

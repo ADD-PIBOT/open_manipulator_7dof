@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <robot name="open_manipulator_7dof" xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:property name="leftarm_rightarm" default="${pi/2}"/>
+  <!-- Left or Right configuration -->
+  <xacro:property name="left_right" default="left"/>
 
   <!-- Import Rviz colors -->
   <xacro:include filename="$(find open_manipulator_7dof_description)/urdf/materials.xacro" />
@@ -15,12 +16,12 @@
   <xacro:include filename="$(find open_manipulator_7dof_description)/urdf/open_manipulator_7dof.urdf.xacro" />
 
   <!-- World -->
-  <!-- <link name="world"/> -->
+  <link name="world"/>
 
   <!-- World fixed joint-->
-  <!-- <joint name="world_fixed" type="fixed">
+  <joint name="world_fixed" type="fixed">
     <origin xyz="0 0 0" rpy="0 0 0"/>
     <parent link="world"/>
     <child link="link1"/>
-  </joint> -->
+  </joint>
 </robot>

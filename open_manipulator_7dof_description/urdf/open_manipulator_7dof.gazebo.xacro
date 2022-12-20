@@ -39,7 +39,7 @@
   <RefLink ref="link7"/>
 
   <!-- end_link -->
-  <RefLink ref="end_link"/>
+  <RefLink ref="fake_end_link"/>
 
   <!-- ros_control plugin -->
   <gazebo>

@@ -1,0 +1,318 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:macro name="open_manipulator_7" params="name">
+    <!-- Left or Right configuration -->
+    <xacro:property name="left_right" default="left" />
+
+    <xacro:if value="${left_right == 'left'}">
+      <xacro:property name="leftarm_rightarm" default="-${pi/2}" />
+    </xacro:if>
+
+    <xacro:if value="${left_right == 'right'}">
+      <xacro:property name="leftarm_rightarm" default="${pi/2}" />
+    </xacro:if>
+
+    <!-- link 1 -->
+    <link name="${name}_link1">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://open_manipulator_7dof_description/meshes/link1.stl" scale="0.001 0.001 0.001" />
+        </geometry>
+        <material name="${name}_grey" />
+      </visual>
+
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://open_manipulator_7dof_description/meshes/link1.stl" scale="0.001 0.001 0.001" />
+        </geometry>
+      </collision>
+
+      <inertial>
+        <origin xyz="0.0000000e+00 -1.7653633e-04 -1.0030209e-03" rpy="0 0 0"/>
+        <mass value="0.855" />
+        <inertia ixx="1.0e-03" ixy="0.0" ixz="0.0" 
+                iyx="0.0" iyy="1.0e-03" iyz="0.0" 
+                izx="0.0" izy="0.0" izz="1.0e-03" />
+        <!-- <inertia ixx="1.2766146" ixy="1.1040986e-02" ixz="3.6647805e-02" iyy="1.2415274" iyz="-9.7595981e-02" izz="3.6863307e-01" /> -->
+        <!--<inertia ixx="0.00121064" ixy="0.0" ixz="0.00001100" iyy="0.00120886" iyz="0.0" izz="0.00038103" />-->
+      </inertial>
+    </link>
+
+    <!-- Joint 1 -->
+    <joint name="${name}_joint1" type="revolute">
+      <parent link="${name}_link1" />
+      <child link="${name}_link2" />
+      <origin xyz="0.0 0.0 0.126" rpy="0 0 0" />
+      <axis xyz="0 0 1" />
+      <limit velocity="6.5" effort="1000" lower="${-pi*0.95}" upper="${pi*0.95}" />
+      <dynamics damping="0.7" />
+    </joint>
+
+    <!-- link 2 -->
+    <link name="${name}_link2">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://open_manipulator_7dof_description/meshes/link2.stl" scale="0.001 0.001 0.001" />
+        </geometry>
+        <material name="${name}_grey" />
+      </visual>
+
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://open_manipulator_7dof_description/meshes/link2.stl" scale="0.001 0.001 0.001" />
+        </geometry>
+      </collision>
+
+      <inertial>
+        <origin xyz="0.0000000e+00 -1.7653633e-04 -1.0030209e-03" rpy="0 0 0"/>
+        <mass value="9.4360595e-01"/>
+        <inertia ixx="1.5694005e-03" ixy="0.0" ixz="0.0" 
+                iyx="0.0" iyy="4.5593385e-04" iyz="6.4581824e-09" 
+                izx="0.0" izy="6.4581824e-09" izz="1.5561809e-03" />
+      </inertial>
+    </link>
+
+    <!-- Joint 2 -->
+    <joint name="${name}_joint2" type="revolute">
+      <parent link="${name}_link2" />
+      <child link="${name}_link3" />
+      <origin xyz="0.0 0.069 0.033" rpy="0 0 0" />
+      <axis xyz="0 1 0" />
+      <limit velocity="6.5" effort="1000" lower="${-pi*0.5}" upper="${pi*0.5}" />
+      <dynamics damping="0.7" />
+    </joint>
+
+    <!-- link 3 -->
+    <link name="${name}_link3">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://open_manipulator_7dof_description/meshes/link3.stl" scale="0.001 0.001 0.001" />
+        </geometry>
+        <material name="${name}_grey" />
+      </visual>
+
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://open_manipulator_7dof_description/meshes/link3.stl" scale="0.001 0.001 0.001" />
+        </geometry>
+      </collision>
+
+      <inertial>
+        <origin xyz="0.001e-3 -68.947e-3 116.982e-3" rpy="0 0 0" />
+        <!--<origin xyz="-0.01232 -0.05731 -0.05876" rpy="0 0 0"/>-->
+        <mass value="1.280" />
+        <inertia ixx="4955.278e-6" ixy="0.0" ixz="-0.021e-6" iyy="4269.315e-6" iyz="11.989e-6" izz="1425.683e-6" />
+      </inertial>
+    </link>
+
+    <!-- Joint 3 -->
+    <joint name="${name}_joint3" type="revolute">
+      <parent link="${name}_link3" />
+      <child link="${name}_link4" />
+      <origin xyz="0.0 -0.069 0.195" rpy="0 0 ${leftarm_rightarm}" />
+      <axis xyz="0 0 1" />
+      <limit velocity="6.5" effort="1000" lower="${-pi*0.75}" upper="${pi*0.75}" />
+      <dynamics damping="0.7" />
+    </joint>
+
+    <!-- link 4 -->
+    <link name="${name}_link4">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://open_manipulator_7dof_description/meshes/link4.stl" scale="0.001 0.001 0.001" />
+        </geometry>
+        <material name="${name}_grey" />
+      </visual>
+
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://open_manipulator_7dof_description/meshes/link4.stl" scale="0.001 0.001 0.001" />
+        </geometry>
+      </collision>
+
+      <inertial>
+        <origin xyz="21.079e-3 -2.170e-3 84.922e-3" rpy="0 0 0" />
+        <!--<origin xyz="-0.07025 0.00034 -0.00021" rpy="0 0 0"/>-->
+        <mass value="1.080" />
+        <inertia ixx="9475.516e-6" ixy="36.012e-6" ixz="-2217.686e-6" iyy="9544.852e-6" iyz="201.732e-6" izz="1886.745e-6" />
+        <!--<inertia ixx="0.00096726" ixy="0.00004383" ixz="-0.00002771" iyy="0.00318801" iyz="0.00000627" izz="0.00341484" />-->
+      </inertial>
+    </link>
+
+    <!-- Joint 4 -->
+    <joint name="${name}_joint4" type="revolute">
+      <parent link="${name}_link4" />
+      <child link="${name}_link5" />
+      <origin xyz="0.029998 0.05750 0.097498" rpy="0 0 0" />
+      <axis xyz="0 1 0" />
+      <limit velocity="6.5" effort="1000" lower="${-pi*0.65}" upper="${pi*0.5}" />
+      <dynamics damping="0.7" />
+    </joint>
+
+    <!-- link 5 -->
+    <link name="${name}_link5">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://open_manipulator_7dof_description/meshes/link5.stl" scale="0.001 0.001 0.001" />
+        </geometry>
+        <material name="${name}_grey" />
+      </visual>
+
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://open_manipulator_7dof_description/meshes/link5.stl" scale="0.001 0.001 0.001" />
+        </geometry>
+      </collision>
+
+      <inertial>
+        <origin xyz="3.0352597e-04 4.1703880e-05 3.8074728e-01" rpy="0 0 0"/>
+        <mass value="1.2126965e+00"/>
+        <inertia ixx="1.7985424e-01" ixy="-9.9417476e-07" ixz="-8.1564441e-05" 
+                iyx="-9.9417476e-07" iyy="1.7948679e-01" iyz="-1.7705853e-05" 
+                izx="-8.1564441e-05" izy="-1.7705853e-05" izz="1.1422079e-03" />
+      </inertial>
+    </link>
+
+    <!-- Joint 5 -->
+    <joint name="${name}_joint5" type="revolute">
+      <parent link="${name}_link5" />
+      <child link="${name}_link6" />
+      <origin xyz="0.195 -0.05750 0.03" rpy="0 0 0" />
+      <axis xyz="1 0 0" />
+      <limit velocity="6.5" effort="1000" lower="${-pi*0.95}" upper="${pi*0.95}" />
+      <dynamics damping="0.7" />
+    </joint>
+
+    <!-- link 6 -->
+    <link name="${name}_link6">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://open_manipulator_7dof_description/meshes/link6.stl" scale="0.001 0.001 0.001" />
+        </geometry>
+        <material name="${name}_grey" />
+      </visual>
+
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://open_manipulator_7dof_description/meshes/link6.stl" scale="0.001 0.001 0.001" />
+        </geometry>
+      </collision>
+
+      <inertial>
+        <origin xyz="-2.1388493e-06 -2.2290515e-03 5.1387207e-01" rpy="0 0 0"/>
+        <mass value="4.6635550e-01"/>
+        <inertia ixx="1.2357713e-01" ixy="-1.9465317e-09" ixz="5.1228604e-07" 
+                iyx="-1.9465317e-09" iyy="1.2339567e-01" iyz="5.3769657e-04" 
+                izx="5.1228604e-07" izy="5.3769657e-04" izz="3.3216863e-04" />
+      </inertial>
+    </link>
+
+    <!-- Joint 6 -->
+    <joint name="${name}_joint6" type="revolute">
+      <parent link="${name}_link6" />
+      <child link="${name}_link7" />
+      <origin xyz="0.063 0.045 0.0" rpy="0 0 0" />
+      <axis xyz="0 1 0" />
+      <limit velocity="6.5" effort="1000" lower="${-pi*0.5}" upper="${pi*0.5}" />
+      <dynamics damping="0.7" />
+    </joint>
+
+    <!-- link 7 -->
+    <link name="${name}_link7">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://open_manipulator_7dof_description/meshes/link7.stl" scale="0.001 0.001 0.001" />
+        </geometry>
+        <material name="${name}_grey" />
+      </visual>
+
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://open_manipulator_7dof_description/meshes/link7.stl" scale="0.001 0.001 0.001" />
+        </geometry>
+      </collision>
+
+      <inertial>
+        <origin xyz="-2.1268822e-06 1.8039922e-04 5.9028250e-01" rpy="0 0 0"/>
+        <mass value="4.2561606e-01"/>
+        <inertia ixx="1.4881319e-01" ixy="0.0000000e+00" ixz="5.3435266e-07" 
+                iyx="0.0000000e+00" iyy="1.4872708e-01" iyz="-4.3708754e-05" 
+                izx="5.3435266e-07" izy="-4.3708754e-05" izz="2.1040082e-04" />
+      </inertial>
+    </link>
+
+    <!-- Joint 7 -->
+    <joint name="${name}_joint7" type="revolute">
+      <parent link="${name}_link7" />
+      <child link="${name}_fake_end_link" />
+      <origin xyz="0.1230 -0.045 0.0" rpy="0 0 0" />
+      <axis xyz="1 0 0" />
+      <limit velocity="6.5" effort="1000" lower="${-pi*0.95}" upper="${pi*0.95}" />
+      <dynamics damping="0.7" />
+    </joint>
+
+    <!-- end link -->
+    <link name="${name}_fake_end_link">
+      <visual>
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.01 0.01 0.01" />
+        </geometry>
+        <material name="${name}_grey" />
+      </visual>
+
+      <!-- <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+      <geometry>
+          <box size="0.01 0.01 0.01" />
+        </geometry>
+    </collision> -->
+
+      <inertial>
+        <origin xyz="0.00337 0.00000 0.00000" rpy="0 0 0" />
+        <mass value="0.01919" />
+        <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+        <!--<inertia ixx="0.00000938" ixy="0.0" ixz="0.0" iyy="0.00000338" iyz="0.0" izz="0.00000635" />-->
+      </inertial>
+    </link>
+
+    <!-- end link -->
+    <!-- <link name="end_link">
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://open_manipulator_7dof_description/meshes/end_link.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="grey"/>
+    </visual>
+
+    <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://open_manipulator_7dof_description/meshes/end_link.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <origin xyz="0.00337 0.00000 0.00000" rpy="0 0 0"/>
+      <mass value="0.01919"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+      <!-<inertia ixx="0.00000938" ixy="0.0" ixz="0.0" iyy="0.00000338" iyz="0.0" izz="0.00000635" />->
+    </inertial>
+  </link> -->
+  </xacro:macro>
+</robot>

@@ -1,6 +1,16 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:property name="leftarm_rightarm" default="${pi/2}"/>
+  <!-- Left or Right configuration -->
+  <xacro:property name="left_right" default="left"/>
+
+  <xacro:if value="${left_right == 'left'}">
+    <xacro:property name="leftarm_rightarm" default="-${pi/2}"/>
+  </xacro:if>
+
+  <xacro:if value="${left_right == 'right'}">
+    <xacro:property name="leftarm_rightarm" default="${pi/2}"/>
+  </xacro:if>
+
   <!-- link 1 -->
   <link name="link1">
     <visual>

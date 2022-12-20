@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<robot name="open_manipulator_7dof" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <!-- Left or Right configuration -->
+  <xacro:property name="left_right" default="left"/>
+
+  <!-- Import Rviz colors -->
+  <xacro:include filename="$(find open_manipulator_7dof_description)/urdf/materials_include.xacro" />
+  <xacro:materials name="${left_right}arm"/>
+
+  <!-- Import all Gazebo-customization elements, including Gazebo colors -->
+  <xacro:include filename="$(find open_manipulator_7dof_description)/urdf/open_manipulator_7dof_include.gazebo.xacro" />
+  <xacro:gazebosim name="${left_right}arm"/>
+
+  <!-- Import Transmission -->
+  <xacro:include filename="$(find open_manipulator_7dof_description)/urdf/open_manipulator_7dof_include.transmission.xacro" />
+  <xacro:trans name="${left_right}arm"/>
+
+  <!-- Import URDF -->
+  <xacro:include filename="$(find open_manipulator_7dof_description)/urdf/open_manipulator_7dof_include.urdf.xacro" />
+  <xacro:open_manipulator_7 name="${left_right}arm"/>
+
+  <!-- World -->
+  <!-- World fixed joint-->
+  <!-- <link name="world"/>
+  <joint name="world_fixed" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="world"/>
+    <child link="link1"/>
+  </joint> -->
+</robot>
